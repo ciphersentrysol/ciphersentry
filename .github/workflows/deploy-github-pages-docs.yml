@@ -19,17 +19,15 @@ jobs:
 
       - name: Build cipher-landing
         run: |
-          REPO_NAME=${GITHUB_REPOSITORY##*/}
           cd cipher-landing
           npm install
-          BASE_PATH=/$REPO_NAME/ npm run build
+          BASE_PATH=/ npm run build
 
       - name: Build cipher-sentry
         run: |
-          REPO_NAME=${GITHUB_REPOSITORY##*/}
           cd cipher-sentry
           npm install
-          BASE_PATH=/$REPO_NAME/cipher-sentry/ npm run build
+          BASE_PATH=/cipher-sentry/ npm run build
 
       - name: Prepare docs publish directory
         run: |
