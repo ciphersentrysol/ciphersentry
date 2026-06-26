@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 
 const X_URL  = "https://x.com/ciphersentrysol";
 const CA     = ""; // contract address — fill in when live
-const basePath = import.meta.env.BASE_URL ?? "/";
-const sentryPath = basePath.endsWith("cipher-landing/")
-  ? basePath.replace(/cipher-landing\/?$/, "cipher-sentry/")
-  : `${basePath}cipher-sentry/`;
+const envBase = import.meta.env.BASE_URL ?? "/";
+const basePath = envBase.endsWith("/") ? envBase : `${envBase}/`;
+const logoPath = `${basePath}logo.png`;
+const sentryPath = `${basePath}cipher-sentry/`;
 
 const AGENTS = [
   { id:"01", name:"TX Inspector",   desc:"v0 trace · CU map · sig decoder",          icon:"🔍" },
@@ -61,7 +61,7 @@ export default function App() {
       {/* Top bar */}
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[24px] h-[48px] border-b border-[#0f2018] bg-[#060e0aee] backdrop-blur-md">
         <div className="flex items-center gap-[10px]">
-          <img src={`${basePath}logo.png`} alt="Cipher Sentry" className="w-[28px] h-[28px] rounded-[8px]" />
+          <img src={logoPath} alt="Cipher Sentry" className="w-[28px] h-[28px] rounded-[8px]" />
           <span className="text-[13.5px] font-semibold text-[#d8fff0]">cipher sentry</span>
           <span className="hidden sm:block text-[10.5px] text-[#3a6650] ml-1">v2.2</span>
         </div>
@@ -220,7 +220,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-[#0d1e14] px-[24px] py-[24px] flex flex-col sm:flex-row items-center justify-between gap-[10px]">
         <div className="flex items-center gap-[10px]">
-          <img src={`${basePath}logo.png`} alt="Cipher Sentry" className="w-[22px] h-[22px] rounded-[6px]" />
+          <img src={logoPath} alt="Cipher Sentry" className="w-[22px] h-[22px] rounded-[6px]" />
           <span className="text-[11px] text-[#2a5040]">cipher sentry v2.2 · Solana mainnet</span>
         </div>
         <div className="flex items-center gap-[18px] text-[11px] text-[#2a5040]">
