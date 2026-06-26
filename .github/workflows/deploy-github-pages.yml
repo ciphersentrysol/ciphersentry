@@ -34,6 +34,7 @@ jobs:
         run: |
           mkdir -p gh-pages-temp/cipher-landing
           mkdir -p gh-pages-temp/cipher-sentry
+          touch gh-pages-temp/.nojekyll
           cp -r cipher-landing/dist/public/* gh-pages-temp/cipher-landing/
           cp -r cipher-sentry/dist/public/* gh-pages-temp/cipher-sentry/
           cat > gh-pages-temp/index.html <<'EOF'
