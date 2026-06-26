@@ -5,11 +5,11 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 
-const rawPort = process.env.PORT;
+const rawPort = process.env.PORT ?? "4173";
 
-if (!rawPort) {
-  throw new Error(
-    "PORT environment variable is required but was not provided.",
+if (!process.env.PORT) {
+  console.warn(
+    'PORT is not set. Falling back to default port 4173 for Vite server/preview.',
   );
 }
 
@@ -19,11 +19,11 @@ if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
-const basePath = process.env.BASE_PATH;
+const basePath = process.env.BASE_PATH || "/";
 
-if (!basePath) {
-  throw new Error(
-    "BASE_PATH environment variable is required but was not provided.",
+if (!process.env.BASE_PATH) {
+  console.warn(
+    'BASE_PATH is not set. Falling back to "/" for local development.',
   );
 }
 

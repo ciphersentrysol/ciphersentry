@@ -606,7 +606,7 @@ export default function App(){
       <div className="max-w-[1440px] mx-auto px-4 sm:px-7 lg:px-9">
         <header className="py-[15px] flex flex-wrap items-center gap-4 border-b border-[#14201c]">
           <div className="flex items-center gap-[12px]">
-            <img src="/logo.png" alt="Cipher Sentry" className="w-[40px] h-[40px] rounded-[13px]" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Cipher Sentry" className="w-[40px] h-[40px] rounded-[13px]" />
             <div>
               <div className="text-[20px] tracking-[-0.012em]">cipher <span className="text-[#6befcb]">sentry</span> <span className="text-[11.8px] mono text-[#6f9b82]">v2.2</span></div>
               <div className="text-[11.3px] text-[#6f967f] -mt-[2px]">solana ops agent • multi-agent • stable</div>

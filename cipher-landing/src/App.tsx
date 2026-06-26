@@ -57,7 +57,7 @@ export default function App() {
       {/* Top bar */}
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[24px] h-[48px] border-b border-[#0f2018] bg-[#060e0aee] backdrop-blur-md">
         <div className="flex items-center gap-[10px]">
-          <img src="/cipher-landing/logo.png" alt="Cipher Sentry" className="w-[28px] h-[28px] rounded-[8px]" />
+          <img src={`${import.meta.env.BASE_URL}cipher-landing/logo.png`} alt="Cipher Sentry" className="w-[28px] h-[28px] rounded-[8px]" />
           <span className="text-[13.5px] font-semibold text-[#d8fff0]">cipher sentry</span>
           <span className="hidden sm:block text-[10.5px] text-[#3a6650] ml-1">v2.2</span>
         </div>
@@ -106,7 +106,7 @@ export default function App() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-[12px]">
-            <a href="/"
+            <a href={import.meta.env.BASE_URL}
               className="px-[24px] py-[11px] rounded-[12px] bg-[#14ff7a] text-[#060e0a] text-[14px] font-bold hover:bg-[#3dffa0] transition-colors shadow-[0_0_28px_#14ff7a40]">
               Explore Agents →
             </a>
@@ -216,7 +216,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-[#0d1e14] px-[24px] py-[24px] flex flex-col sm:flex-row items-center justify-between gap-[10px]">
         <div className="flex items-center gap-[10px]">
-          <img src="/cipher-landing/logo.png" alt="Cipher Sentry" className="w-[22px] h-[22px] rounded-[6px]" />
+          <img src={`${import.meta.env.BASE_URL}cipher-landing/logo.png`} alt="Cipher Sentry" className="w-[22px] h-[22px] rounded-[6px]" />
           <span className="text-[11px] text-[#2a5040]">cipher sentry v2.2 · Solana mainnet</span>
         </div>
         <div className="flex items-center gap-[18px] text-[11px] text-[#2a5040]">
