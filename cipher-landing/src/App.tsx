@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const X_URL  = "https://x.com/ciphersentrysol";
-const CA     = ""; // contract address — fill in when live
+const CA     = "FqRc83u6TRx1b1NAiipHBGKSaN6FuSt8iJ1tSwrEASY"; // contract address — fill in when live
 const envBase = import.meta.env.BASE_URL ?? "/";
 const basePath = envBase.endsWith("/") ? envBase : `${envBase}/`;
 const logoPath = `${basePath}logo.png`;
