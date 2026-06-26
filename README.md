@@ -14,6 +14,8 @@ It builds both apps and publishes them to the `gh-pages` branch with the landing
 - `/` → landing page
 - `/cipher-sentry/` → Cipher Sentry dashboard
 
+The workflow also writes a `CNAME` file for the custom domain `ciphersentry.xyz`.
+
 > Important: GitHub Pages must be configured to publish from the `gh-pages` branch, folder `/`.
 
 A second workflow is available at `.github/workflows/deploy-github-pages-docs.yml`.

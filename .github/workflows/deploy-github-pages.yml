@@ -37,6 +37,7 @@ jobs:
           mkdir -p gh-pages-temp/cipher-sentry
           mkdir -p gh-pages-temp/cipher-landing
           touch gh-pages-temp/.nojekyll
+          echo "ciphersentry.xyz" > gh-pages-temp/CNAME
           cp -r cipher-landing/dist/public/* gh-pages-temp/
           cp -r cipher-landing/dist/public/* gh-pages-temp/cipher-landing/
           cp -r cipher-sentry/dist/public/* gh-pages-temp/cipher-sentry/
