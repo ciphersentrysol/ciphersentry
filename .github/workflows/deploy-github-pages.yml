@@ -22,14 +22,16 @@ jobs:
           node-version: 24
       - name: Build cipher-landing
         run: |
+          REPO_NAME=${GITHUB_REPOSITORY##*/}
           cd cipher-landing
           npm install
-          BASE_PATH=/cipher-landing/ npm run build
+          BASE_PATH=/$REPO_NAME/cipher-landing/ npm run build
       - name: Build cipher-sentry
         run: |
+          REPO_NAME=${GITHUB_REPOSITORY##*/}
           cd cipher-sentry
           npm install
-          BASE_PATH=/cipher-sentry/ npm run build
+          BASE_PATH=/$REPO_NAME/cipher-sentry/ npm run build
       - name: Prepare GitHub Pages publish directory
         run: |
           mkdir -p gh-pages-temp/cipher-landing
@@ -43,16 +45,13 @@ jobs:
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Cipher Sentry Pages</title>
+              <title>Cipher Sentry</title>
+              <meta http-equiv="refresh" content="0; URL=./cipher-landing/" />
               <style>body{font-family:sans-serif;line-height:1.6;padding:2rem;background:#060e0a;color:#d8fff0;}a{color:#6effaf;}</style>
             </head>
             <body>
               <h1>Cipher Sentry</h1>
-              <p>Choose an app:</p>
-              <ul>
-                <li><a href="./cipher-landing/">Cipher Landing</a></li>
-                <li><a href="./cipher-sentry/">Cipher Sentry</a></li>
-              </ul>
+              <p>Redirecting to <a href="./cipher-landing/">Cipher Landing</a>...</p>
             </body>
           </html>
           EOF
