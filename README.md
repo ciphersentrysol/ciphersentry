@@ -9,12 +9,10 @@ This repository contains two Vite-based React apps:
 
 A GitHub Actions workflow is configured at `.github/workflows/deploy-github-pages.yml`.
 
-It builds both apps and publishes them to the `gh-pages` branch under separate subpaths:
+It builds both apps and publishes them to the `gh-pages` branch with the landing app at the repository root and the main app under `/cipher-sentry/`.
 
-- `/cipher-landing/`
-- `/cipher-sentry/`
-
-A simple root landing page is also generated at `index.html` to link both apps.
+- `/` → landing page
+- `/cipher-sentry/` → Cipher Sentry dashboard
 
 > Important: GitHub Pages must be configured to publish from the `gh-pages` branch, folder `/`.
 
