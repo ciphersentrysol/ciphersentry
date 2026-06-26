@@ -16,6 +16,14 @@ It builds both apps and publishes them to the `gh-pages` branch under separate s
 
 A simple root landing page is also generated at `index.html` to link both apps.
 
+> Important: GitHub Pages must be configured to publish from the `gh-pages` branch, folder `/`.
+
+A second workflow is available at `.github/workflows/deploy-github-pages-docs.yml`.
+It builds the same apps and publishes the outputs to `main/docs/`.
+If your repository is configured to publish GitHub Pages from `main /docs`, this workflow provides an alternate deployment path.
+
+This workflow runs manually via Actions (`workflow_dispatch`) so it does not commit `docs/` on every `main` push.
+
 ## Local development
 
 Each app can be run independently:

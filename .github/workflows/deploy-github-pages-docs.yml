@@ -1,43 +1,42 @@
-name: Deploy Cipher Sentry to GitHub Pages
+name: Deploy Cipher Sentry to GitHub Pages (docs)
 
 on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build-and-publish-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: true
+
       - name: Use Node.js 24
         uses: actions/setup-node@v5
         with:
           node-version: 24
+
       - name: Build cipher-landing
         run: |
           cd cipher-landing
           npm install
           BASE_PATH=/cipher-landing/ npm run build
+
       - name: Build cipher-sentry
         run: |
           cd cipher-sentry
           npm install
           BASE_PATH=/cipher-sentry/ npm run build
-      - name: Prepare GitHub Pages publish directory
+
+      - name: Prepare docs publish directory
         run: |
-          mkdir -p gh-pages-temp/cipher-landing
-          mkdir -p gh-pages-temp/cipher-sentry
-          touch gh-pages-temp/.nojekyll
-          cp -r cipher-landing/dist/public/* gh-pages-temp/cipher-landing/
-          cp -r cipher-sentry/dist/public/* gh-pages-temp/cipher-sentry/
-          cat > gh-pages-temp/index.html <<'EOF'
+          rm -rf docs
+          mkdir -p docs/cipher-landing docs/cipher-sentry
+          touch docs/.nojekyll
+          cp -r cipher-landing/dist/public/* docs/cipher-landing/
+          cp -r cipher-sentry/dist/public/* docs/cipher-sentry/
+          cat > docs/index.html <<'EOF'
           <!DOCTYPE html>
           <html lang="en">
             <head>
@@ -56,12 +55,15 @@ jobs:
             </body>
           </html>
           EOF
-      - name: Deploy to GitHub Pages
-        # Repository Pages settings must be configured to publish from the gh-pages branch, path /
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./gh-pages-temp
-          publish_branch: gh-pages
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Commit docs to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs
+          if git diff --cached --quiet; then
+            echo "No docs changes to commit"
+          else
+            git commit -m 'chore: update GitHub Pages docs site'
+            git push origin main
+          fi
